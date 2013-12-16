@@ -1,5 +1,7 @@
 package com.example.jeedemo.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,5 +17,10 @@ public class GasnicaManager {
 	public void addGasnica(Gasnica gasnica) {
 		gasnica.setId(null);
 		em.persist(gasnica);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Gasnica> getAllGasnice(){
+		return em.createNamedQuery("gasnica.getAllGasnice").getResultList();
 	}
 }
